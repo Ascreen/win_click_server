@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1527597351 source:c:\users\ksy\desktop\new_win_server\main.cpp
+1528801217 source:c:\users\ksy\desktop\new_win_server\main.cpp
 	<winsock2.h>
 	<stdio.h>
 	<stdlib.h>

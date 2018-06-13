@@ -853,7 +853,7 @@ int main(int argc, char** argv)
 			exit(1);
 		}
 		else
-			printf("[Server] Server has got connected from Clinet.\n");// inet_ntoa(addr_remote.sin_addr));
+			printf("[Server] Server has got connected from Client.\n");// inet_ntoa(addr_remote.sin_addr));
 
 																	   /*	Receive File from Client(show console)	*/
 																	   //int fr_block_sz = 0;
@@ -884,7 +884,7 @@ int main(int argc, char** argv)
 			printf("File %s Cannot be opened file on server.\n", fr4);
 		*/
 
-		//else{
+		if(fr!=NULL){
 			memset(revbuf, LENGTH, '0');
 			int fr_block_sz = 0;
 			while ((fr_block_sz = recv(hClntSock, revbuf, LENGTH, 0)) > 0)
@@ -906,12 +906,14 @@ int main(int argc, char** argv)
 					check_four = 1;
 				}
 				int write_sz1 = fwrite(revbuf, sizeof(char), fr_block_sz, fr);
+
 				if (write_sz1 < fr_block_sz)
 				{
 					exit(1);
 				}
 
 				memset(revbuf, LENGTH, '0');
+
 				if (check_one + check_two + check_three + check_four == 4) {
 					sbjz_main();
 					check_one = 0;
@@ -924,7 +926,7 @@ int main(int argc, char** argv)
 					break;
 				}
 			}
-		//}
+		}
 		fclose(fr);
 	}
 	return 0;
